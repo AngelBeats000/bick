@@ -1,0 +1,39 @@
+{include file="public/head"}
+<!--Head Ends-->
+<!--Body-->
+
+<body>
+    <div class="login-container animated fadeInDown">
+        <form action="" method="post">
+            <div class="loginbox bg-white">
+                <div class="loginbox-title">SIGN IN</div>
+                <div class="loginbox-textbox">
+                    <input value="admin" class="form-control" placeholder="username" name="name" required="" type="text">
+                </div>
+                <div class="loginbox-textbox">
+                    <input class="form-control" placeholder="password" name="password" required="" type="password">
+                </div>  
+                <div class="loginbox-textbox">
+                    <input class="form-control" name="code" style="width:40%;float: left;" required="" placeholder="验证码" type="text">
+                    <img src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?'+Math.random();" style="float: right;width: 120px;cursor: pointer;" alt="captcha" />
+                </div>
+                <div class="loginbox-submit">
+                    <input class="btn btn-primary btn-block" value="Login" type="submit">
+                </div>
+            </div>
+                <div class="logobox">
+                    
+                </div>
+        </form>
+    </div>
+    <!--Basic Scripts-->
+    <script src="style/jquery.js"></script>
+    <script src="style/bootstrap.js"></script>
+    <script src="style/jquery_002.js"></script>
+    <!--Beyond Scripts-->
+    <script src="style/beyond.js"></script>
+
+
+
+
+</body><!--Body Ends--></html>

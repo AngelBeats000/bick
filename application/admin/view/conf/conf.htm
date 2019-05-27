@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="utf-8">
+    <title>企业项目实训</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="public/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="public/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('index/index')}">系统</a>
+                    </li>
+                                        <li class="active">配置项</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb --> 
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加链接" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('add')}'" > 网站配置
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+
+                    <form action="" method="post">
+
+                        <table class="table table-bordered table-hover">
+                            <thead class="">
+                                <tr>
+                                    <th class="text-right" width="10%">配置名称</th>
+                                    <th class="text-left">配置值</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                            
+                                {volist name="conf" id="c"}
+                                <tr>
+                                    <td align="right">{$c.cnname}</td>
+                                    <td align="left">
+                                        {switch name="$c.type"}
+                                            {case value="1"}<input class="form-control"  placeholder="" name="{$c.enname}" required="" value="{$c.value}" type="text">{/case}
+                                            {case value="2"}<textarea class="form-control" style="height: 60px;resize: none;" name="{$c.enname}">{$c.value}</textarea>{/case}
+                                            {case value="3"}
+                                                {if condition="$c['values']"}<?php $arr=explode(',',$c['values']);?>{/if}
+                                                <?php foreach($arr as $k1 => $v1): ?>
+                                                    <label>
+                                                        <input name="{$c.enname}" value="{$v1}" {if condition="$v1 eq $c['value']"} checked="checked" {/if}  type="radio">
+                                                        <span class="text">{$v1}</span>
+                                                    </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <?php endforeach;?>
+
+
+                                            {/case}
+
+                                            {case value="4"}
+                                                {if condition="$c['values']"}<?php $arr=explode(',',$c['values']);?>{/if}
+                                                <?php foreach($arr as $k2 => $v2): ?>
+                                                    <label>
+                                                        <input name="{$c.enname}[]" value="{$v2}" {if condition="$v2 eq $c['value']"} checked="checked" {/if}  type="checkbox">
+                                                        <span class="text">{$v2}</span>
+                                                    </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <?php endforeach;?>
+                                            {/case}
+
+                                            {case value="5"}
+                                                {if condition="$c['values']"}<?php $arr=explode(',',$c['values']);?>{/if}
+                                                
+                                                    <label>
+                                                        <select name="{$c.enname}">
+                                                            <?php foreach($arr as $k3 => $v3): ?>
+                                                            <option value="{$v3}" {if condition="$v3 eq $c['value']"} selected {/if} >{$v3}</option>
+                                                            <?php endforeach;?>
+                                                        </select>
+                                                    </label>
+                                                
+                                            {/case}
+
+                                            {case value="6"}
+                                                    <label>
+                                                        <input class="checkbox-slider slider-icon colored-darkorange" {if condition="$c['value'] eq 'on'"} checked="checked" {/if} name="{$c.enname}"  type="checkbox">
+                                                        <span class="text"></span>
+                                                    </label>   
+                                            {/case}
+
+                                            {default /}未知类型
+                                        {/switch}
+                                        
+                                    </td>
+                                 
+
+                                    
+                                </tr>
+                               {/volist}
+                                    
+                                <tr><td colspan="2"><input type="submit" class="btn btn-danger btn-block" value="保存配置"></td></tr>
+                               
+                            </tbody>
+                                 
+                        </table>
+            
+                    </form>
+
+                </div>
+                    
+                                <div>
+                	               </div>
+                                
+                                
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+
+
+</body></html>
